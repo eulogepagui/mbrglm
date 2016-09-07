@@ -1,4 +1,4 @@
-# Welcome to the dev-version of the 
+# Welcome to the ongoing work of the library mbrglm
 
 # [library mbrglm]
 
@@ -19,27 +19,61 @@ To **install** this github version type (in R):
 ## Some examples
 
 ```r
-library(flip)
+library(mbrglm)
+data(endo)
+library(brglm)
 ```
-
-_A univariate analysis_
-
-Testing the symmetry around 0 in a one sample (i.e. equivalent to one sample t-test) 
 
 ```r
-set.seed(1)
-y=rnorm(10)+.5
-res=flip(y)
-summary(res)
+# Fit the GLM using maximum likelihood
+endo.glm <- glm(HG~NV+PI+EH,family=binomial,data=endo)
+## Mean bias-reduced fit usind the R package brglm
+endo.brglm<-brglm(HG~NV+PI+EH,family=binomial,data=endo)
+## Median bias-reduced fit
+endo.mbrglm<-mbrglm(HG~NV+PI+EH,family=binomial,data=endo)
+endo.glm
+endo.brglm
+endo.mbrglm
 ```
 
 ```
-##  Call:
-##  flip(Y = y) 
-## 1023 permutations.
-##   Test  Stat tail p-value sig.
-## Y    t 2.561   ><  0.0293    *
+## 
+## Call:  glm(formula = HG ~ NV + PI + EH, family = binomial, data = endo)
+## 
+## Coefficients:
+## (Intercept)           NV           PI           EH  
+##     4.30452     18.18556     -0.04218     -2.90261  
+## 
+## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
+## Null Deviance:       104.9 
+## Residual Deviance: 55.39     AIC: 63.39
+endo.brglm
+## 
+## Call:  brglm(formula = HG ~ NV + PI + EH, family = binomial, data = endo) 
+## 
+## Coefficients:
+## (Intercept)           NV           PI           EH  
+##     3.77456      2.92927     -0.03475     -2.60416  
+## 
+## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
+## Deviance:        56.5754 
+## Penalized Deviance: 48.0745  AIC: 64.5754
+endo.mbrglm
+## 
+## Call:  mbrglm(formula = HG ~ NV + PI + EH, family = binomial, data = endo) 
+## 
+## Standardized Pearson residual:
+##     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.  
+## -1.52800  -0.49990  -0.23260   0.05676   0.15680   5.80200  
+## 
+## Coefficients:
+## (Intercept)           NV           PI           EH  
+##     3.96936      3.86921     -0.03868     -2.70793  
+## 
+## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
+## Deviance:        55.8679
 ```
+
 
 * * *
 
