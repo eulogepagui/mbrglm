@@ -11,12 +11,13 @@ To **install** this github version type (in R):
     #if devtools is not installed yet: 
     # install.packages("devtools") 
     library(devtools)
-    install_github("livioivil/mbrglm")
+    install_github("eulogepagui/mbrglm")
 
 
 * * *
 
 ## Some examples
+**First example**
 
 ```r
 library(mbrglm)
@@ -79,7 +80,42 @@ endo.mbrglm
 ## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
 ## Deviance:        55.8679
 ```
+Now other links
 
+```r
+update(endo.mbrglm, family = binomial(probit))
+update(endo.mbrglm, family = binomial(cloglog))
+```
+```
+update(endo.mbrglm, family = binomial(probit))
+## 
+## Call:  mbrglm(formula = HG ~ NV + PI + EH, family = binomial(probit),  data = endo) 
+## 
+## Standardized Pearson residual:
+##     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.  
+## -1.47200  -0.52520  -0.26210   0.04931   0.17090   5.95500  
+## 
+## Coefficients:
+## (Intercept)           NV           PI           EH  
+##     1.98426      1.97083     -0.01661     -1.42457  
+## 
+## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
+## Deviance:        57.0296
+update(endo.mbrglm, family = binomial(cloglog))
+## 
+## Call:  mbrglm(formula = HG ~ NV + PI + EH, family = binomial(cloglog), data = endo) 
+## 
+## Standardized Pearson residual:
+##     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.  
+## -1.62200  -0.48640  -0.24340   0.03919   0.08179   5.28400  
+## 
+## Coefficients:
+## (Intercept)           NV           PI           EH  
+##     3.11967      1.80369     -0.03714     -2.32510  
+## 
+## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
+## Deviance:        54.8008
+```
 
 * * *
 
