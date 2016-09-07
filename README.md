@@ -37,6 +37,8 @@ endo.mbrglm
 ```
 
 ```
+endo.glm
+
 ## 
 ## Call:  glm(formula = HG ~ NV + PI + EH, family = binomial, data = endo)
 ## 
@@ -47,7 +49,9 @@ endo.mbrglm
 ## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
 ## Null Deviance:       104.9 
 ## Residual Deviance: 55.39     AIC: 63.39
+
 endo.brglm
+
 ## 
 ## Call:  brglm(formula = HG ~ NV + PI + EH, family = binomial, data = endo) 
 ## 
@@ -58,7 +62,9 @@ endo.brglm
 ## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
 ## Deviance:        56.5754 
 ## Penalized Deviance: 48.0745  AIC: 64.5754
+
 endo.mbrglm
+
 ## 
 ## Call:  mbrglm(formula = HG ~ NV + PI + EH, family = binomial, data = endo) 
 ## 
