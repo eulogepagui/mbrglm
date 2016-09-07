@@ -17,7 +17,7 @@ To **install** this github version type (in R):
 * * *
 
 ## Some examples
-**First example**
+**First example: endometrial dataset**
 
 ```r
 library(mbrglm)
@@ -116,7 +116,63 @@ update(endo.mbrglm, family = binomial(cloglog))
 ## Degrees of Freedom: 78 Total (i.e. Null);  75 Residual
 ## Deviance:        54.8008
 ```
+**second example: example 4.2 of paper by Andrey Gelman et al. 2008. Annals of applied Statistics.**
 
+```r
+x<-c(-0.86,-0.30,-0.05,0.73)
+z.x<- (1/sqrt(4))*(x-mean(x))/sqrt(var(x))
+weights<-rep(5,4)
+z<-c(0,1,3,5)
+y=z/weights
+fit.glm<-glm(y~z.x,family=binomial,weights=weights)
+fit.brglm<-brglm(y~z.x,family=binomial,weights=weights)
+fit.mbrglm<-mbrglm(y~z.x,family=binomial,weights=weights)
+fit.glm
+fit.brglm
+fit.mbrglm
+```
+```
+fit.glm
+## 
+## Call:  glm(formula = y ~ z.x, family = binomial, weights = weights)
+## 
+## Coefficients:
+## (Intercept)          z.x  
+##    -0.08328     10.23079  
+## 
+## Degrees of Freedom: 3 Total (i.e. Null);  2 Residual
+## Null Deviance:       15.79 
+## Residual Deviance: 0.05474   AIC: 7.965
+
+fit.brglm
+
+## 
+## Call:  brglm(formula = y ~ z.x, family = binomial, weights = weights) 
+## 
+## Coefficients:
+## (Intercept)          z.x  
+##     -0.2032       5.4207  
+## 
+## Degrees of Freedom: 3 Total (i.e. Null);  2 Residual
+## Deviance:        1.0484 
+## Penalized Deviance: 1.9875   AIC: 8.9585
+
+fit.mbrglm
+
+## 
+## Call:  mbrglm(formula = y ~ z.x, family = binomial, weights = weights) 
+## 
+## Standardized Pearson residual:
+##      Min.    1st Qu.     Median       Mean    3rd Qu.       Max.  
+## -0.300500  -0.267100   0.007402   0.015900   0.290400   0.349300  
+## 
+## Coefficients:
+## (Intercept)          z.x  
+##     -0.1712       7.5715  
+## 
+## Degrees of Freedom: 3 Total (i.e. Null);  2 Residual
+## Deviance:        0.2755
+```
 * * *
 
 ## References
