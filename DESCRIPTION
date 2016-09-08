@@ -1,0 +1,11 @@
+Package: mbrglm
+Type: Package
+Title: Median bias reduction in Binomial-response GLMs
+Version: 0.0.1
+Date: 2016-09-07
+Author: Euloge Clovis Kenne Pagui, Nicola Sartori  and Alessandra Salvan 
+Maintainer: Euloge C. Kenne Pagui <kenne@stat.unipd.it>
+Description: Fit generalized linear models with binomial responses using  a median modified score approach to median bias reduction. This method respects equivariance under reparameterizations for each parameter component and also solves the infinite estimates problem (data separation).
+License: GPL-2
+Suggests: brglm
+Depends: R (>= 2.6.0), nleqslv, enrichwith
