@@ -104,7 +104,6 @@ modification = function(X,mu.eta,mu,A,B,InfoInv,weights)
    X<-as.matrix(X)
    n <- nrow(X)
    p <- ncol(X)
-   
    mod <- rep(0,p)
    out <- .C('modification',
             as.integer(p),
