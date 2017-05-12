@@ -104,12 +104,7 @@ modification = function(X,mu.eta,mu,A,B,InfoInv,weights)
    X<-as.matrix(X)
    n <- nrow(X)
    p <- ncol(X)
-   nu_r_s_t <- nu_r_st <- array(0,c(p,p,p))
-   for (r in 1:p)
-   {
-      nu_r_s_t[r,,] <- t(X)%*%((A^3*mu*(1-mu)*(1-2*mu)/weights^2*X[,r])*X)
-      nu_r_st[r,,] <- t(X)%*%((B*mu.eta*X[,r])*X)
-   }
+   
    mod <- rep(0,p)
    out <- .C('modification',
             as.integer(p),
