@@ -116,7 +116,7 @@ modification = function(X,mu.eta,mu,A,B,InfoInv,weights)
             as.integer(n),
             as.double(X),
             as.double(mu.eta),
-            as.double(mu,
+            as.double(mu),
             as.double(A),
             as.double(B),
             as.double(InfoInv),
