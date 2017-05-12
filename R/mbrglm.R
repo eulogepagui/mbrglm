@@ -113,9 +113,14 @@ modification = function(X,mu.eta,mu,A,B,InfoInv,weights)
    mod <- rep(0,p)
    out <- .C('modification',
             as.integer(p),
+            as.integer(n),
+            as.double(X),
+            as.double(mu.eta),
+            as.double(mu,
+            as.double(A),
+            as.double(B),
             as.double(InfoInv),
-            as.double( nu_r_s_t),
-            as.double(nu_r_st),
+            as.double(weights),
             mod=as.double(mod)
             )
    out$mod
